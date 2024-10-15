@@ -28,7 +28,9 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $game = Game::create(['player_one_id' => $request->user()->id]);
+
+        return to_route('games.show', $game);
     }
 
     /**
@@ -36,7 +38,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return inertia('Game/Show');
     }
 
     /**
